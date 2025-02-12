@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            margin-top: 700px;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        button {
+            background-color: #e91e63;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #d81b60;
+        }
+
+        #yes-message, #no-message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #e91e63;
+            display: none;
+        }
+        .video-background1 {
+          max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .warning {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            display: none;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .popup-image {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .popup-image img {
+            max-width: 80%;
+            border: 5px solid #e91e63;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <video class="video-background" autoplay muted loop>
+        <source src="bg2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container">
+        <h1>Will You Be My Valentine?</h1>
+        <video class="video-background1" autoplay muted loop>
+        <source src="popup.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+        <p>I've been thinking about you, and I'd love to know...</p>
+        <button id="yes-button">Yes!</button>
+        <button id="no-button">No</button>
+
+        <div id="yes-message">Yeyy!! Iloveyousomuch 💐♥️💐</div>
+        <div id="no-message">Aww, that's okay. Maybe next time. 😊</div>
+
+        <div class="warning" id="warning-message">Why did you click No!! 😢</div>
+
+        <div class="popup-image" id="popup-image">
+            <img src="pic1.jpg" alt="Surprise Image">
+        </div>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yes-button');
+        const noButton = document.getElementById('no-button');
+        const yesMessage = document.getElementById('yes-message');
+        const noMessage = document.getElementById('no-message');
+        const warningMessage = document.getElementById('warning-message');
+        const popupImage = document.getElementById('popup-image');
+
+        yesButton.addEventListener('click', () => {
+            yesMessage.style.display = 'block';
+            noMessage.style.display = 'none';
+            popupImage.style.display = 'block';
+        });
+
+        noButton.addEventListener('click', () => {
+            noMessage.style.display = 'none';
+            yesMessage.style.display = 'none';
+            warningMessage.style.display = 'block';
+
+            setTimeout(() => {
+                warningMessage.style.display = 'none';
+            }, 2000);
+        });
+    </script>
+
+</body>
+</html>
